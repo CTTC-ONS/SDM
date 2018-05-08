@@ -1,0 +1,54 @@
+module: tapi-sdm
+  augment /tapi-common:context/tapi-connectivity:connectivity-service:
+    +--rw include-core
+       +--rw core-id?                   uint64
+       +--ro selected-frequency-slot* [slot-id]
+          +--ro slot-id                      uint64
+          +--ro nominal-central-frequency
+          |  +--ro grid-type?                grid-type
+          |  +--ro adjustment-granularity?   adjustment-granularity
+          |  +--ro channel-number?           uint64
+          +--ro slot-width-number?           uint64
+  augment /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point:
+    +--ro sdm-termination
+       +--ro core-id?                   uint64
+       +--ro selected-frequency-slot* [slot-id]
+          +--ro slot-id                      uint64
+          +--ro nominal-central-frequency
+          |  +--ro grid-type?                grid-type
+          |  +--ro adjustment-granularity?   adjustment-granularity
+          |  +--ro channel-number?           uint64
+          +--ro slot-width-number?           uint64
+  augment /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point:
+    +--ro sdm-pool
+       +--ro available-core* [core-id]
+       |  +--ro core-id                     uint64
+       |  +--ro available-frequency-slot* [slot-id]
+       |  |  +--ro slot-id                      uint64
+       |  |  +--ro nominal-central-frequency
+       |  |  |  +--ro grid-type?                grid-type
+       |  |  |  +--ro adjustment-granularity?   adjustment-granularity
+       |  |  |  +--ro channel-number?           uint64
+       |  |  +--ro slot-width-number?           uint64
+       |  +--ro occupied-frequency-slot* [slot-id]
+       |     +--ro slot-id                      uint64
+       |     +--ro nominal-central-frequency
+       |     |  +--ro grid-type?                grid-type
+       |     |  +--ro adjustment-granularity?   adjustment-granularity
+       |     |  +--ro channel-number?           uint64
+       |     +--ro slot-width-number?           uint64
+       +--ro available-transceiver
+          +--ro transceiver-id?                     string
+          +--ro transceiver-type?                   string
+          +--ro supported-modulation-format
+          |  +--ro modulation-id?   string
+          |  +--ro mod-type?        string
+          +--ro supported-center-frequency-range
+          |  +--ro max-cf?   string
+          |  +--ro min-cf?   string
+          +--ro supported-bandwidth
+          |  +--ro max-bw?   string
+          |  +--ro min-bw?   string
+          +--ro supported-FEC?                      string
+          +--ro supported-equalization?             string
+          +--ro supported-monitoring?               string
