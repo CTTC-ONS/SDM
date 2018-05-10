@@ -141,7 +141,7 @@ module node-topology {
    */
 
   container node {
-  	//config false;
+  	config false;
     uses node;
   }  
 }
