@@ -121,8 +121,7 @@ module node-topology {
       key "core-id";
       uses available-core;
     }
-    list available-transceiver {
-      key "transceiver-id";
+    container available-transceiver {
       uses available-transceiver;
     }
   }
