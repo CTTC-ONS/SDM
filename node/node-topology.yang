@@ -13,14 +13,14 @@ module node-topology {
   description
     "Latest update to node topology SDM YANG data model.";
 
-  revision "2018-05-10" {
+  revision "2018-05-22" {
     description "Update to node topology SDM YANG data model initial revision.";
     reference "";
   }
 
   grouping available-transceiver {
     leaf transceiver-id {
-    	type string;
+      type string;
     }
     leaf transceiver-type {
       type string;
@@ -121,19 +121,20 @@ module node-topology {
       key "core-id";
       uses available-core;
     }
-    container available-transceiver {
+    list available-transceiver {
+      key "transceiver-id";
       uses available-transceiver;
     }
   }
 
   grouping node {
-  	leaf node-id {    	
-    	type string;
-  	}
-  	list port {
-	    key "port-id";
-	    uses port;
-  	}
+    leaf node-id {
+      type string;
+    }
+    list port {
+       key "port-id";
+       uses port;
+    }
   }
 
   /**
@@ -141,7 +142,7 @@ module node-topology {
    */
 
   container node {
-  	config false;
+    config false;
     uses node;
   }  
 }

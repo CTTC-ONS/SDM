@@ -20,8 +20,8 @@ module: node-topology
         |     |  +--ro adjustment-granularity?   string
         |     |  +--ro channel-number?           string
         |     +--ro slot-width-number?           string
-        +--ro available-transceiver
-           +--ro transceiver-id?                     string
+        +--ro available-transceiver* [transceiver-id]
+           +--ro transceiver-id                      string
            +--ro transceiver-type?                   string
            +--ro supported-modulation-format
            |  +--ro modulation-id?   string
