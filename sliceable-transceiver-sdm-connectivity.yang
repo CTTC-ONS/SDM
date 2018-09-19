@@ -68,7 +68,7 @@ module sliceable-transceiver-sdm-connectivity {
       type string;
     }
     leaf mimo {
-      type boolean;
+      type string;
     }
     leaf num_taps {
       type uint32;

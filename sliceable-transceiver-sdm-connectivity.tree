@@ -16,7 +16,7 @@ module: sliceable-transceiver-sdm-connectivity
     |        +--rw fec?                identityref
     |        +--rw equalization
     |        |  +--rw equalizationid?   string
-    |        |  +--rw mimo?             boolean
+    |        |  +--rw mimo?             string
     |        |  +--rw num_taps?         uint32
     |        +--ro monitor
     |           +--ro ber?    string
@@ -38,7 +38,7 @@ module: sliceable-transceiver-sdm-connectivity
              +--ro fec?                identityref
              +--ro equalization
              |  +--ro equalizationid?   string
-             |  +--ro mimo?             boolean
+             |  +--ro mimo?             string
              |  +--ro num_taps?         uint32
              +--ro monitor
                 +--ro ber?    string
