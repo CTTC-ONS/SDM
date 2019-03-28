@@ -1,6 +1,18 @@
 syntax = "proto3";
 package sliceable_transceiver_sdm_service;
 
+enum Constellation {
+    qam64 = 0;
+    qam16 = 1;
+    qam4  = 2;
+    qpsk  = 3;
+}
+
+enum Fec {
+    hdfec = 0;
+    sdfec = 1;
+}
+
 message empty {
 
 }
@@ -16,28 +28,22 @@ message equalization {
 }
 message optical_signal {
     string opticalchannelid = 1 ;
-    enum Constellation {
-        qam64 = 0;
-        qam16 = 1;
-        qam4  = 2;
-        qpsk  = 3;
-    }
+
     Constellation constellation = 2 ;
     uint64 bandwidth = 3 ;
-    enum Fec {
-        hdfec = 0;
-        sdfec = 1;
-    }
     Fec fec = 4 ;
     message equalization {
     }
     message monitor {
-	message ber {
-           double ber = 1 ;
-        }
+        ber ber = 1;
         double osnr = 2 ;
     }
 }
+
+message ber {
+   double ber = 1 ;
+}
+
 message optical_channel {
     string opticalchannelid = 1 ;
     string coreid = 2 ;
@@ -46,31 +52,22 @@ message optical_channel {
     }
 }
 message slice {
-    message sliceid {
-    }
-    message optical_channel {
-    }
-    message optical_signal {
-    }
+    string sliceid = 1 ;
+    repeated optical_channel optical_channel = 2;
+    repeated optical_signal optical_signal =3;
 }
-message sliceid {
+message sliceid{
     string sliceid = 1 ;
 }
 message transceiver {
     string transceiverid = 1 ;
-    message slice {
-    }
-}
-message transceiver_state {
-    string transceiverid = 1 ;
-    message slice {
-    }
+    repeated slice slice = 2;
 }
 
 
 service TransceiverService {
   rpc SetTransceiver (transceiver) returns (empty) {}
-  rpc GetBer(sliceid) returns (stream optical_signal.monitor.ber) {}
+  rpc GetBer(sliceid) returns (stream ber) {}
 
 }
 

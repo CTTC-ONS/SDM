@@ -3,7 +3,7 @@ from __future__ import print_function
 import grpc
 
 import sliceable_transceiver_sdm_service_pb2
-#import sliceable_transceiver_sdm_service_pb2_grpc
+import sliceable_transceiver_sdm_service_pb2_grpc
 
 def createTransceiver(slot_width, constellation, bandwidth, fec):
     transceiver=sliceable_transceiver_sdm_service_pb2.transceiver()
@@ -33,7 +33,7 @@ def createTransceiver(slot_width, constellation, bandwidth, fec):
         equalization.equalizationid = 1
         equalization.mimo = "true"
         equalization.num_taps = "500"
-
+    print(transceiver)
     return transceiver
 
 def SetTransceiver(stub, transceiver):
@@ -45,14 +45,16 @@ def SetTransceiver(stub, transceiver):
 #    print("ConnectionService client received: " + str(response) )
 
 def getBer(stub):
-    responses = stub.GetBer(connectionServiceWithNotif_pb2.Connection(connectionId="conn1"))
+    sliceid=sliceable_transceiver_sdm_service_pb2.sliceid()
+    sliceid.sliceid="1"
+    responses = stub.GetBer(sliceid)
     for response in responses:
-        print("Received Ber %s" % (response.value) )
+        print("Received Ber %s" % (response.ber) )
 
 if __name__ == '__main__':
     transceiver = createTransceiver(2, 1, 12000000000, 1)
     with grpc.insecure_channel('localhost:50051') as channel:
-        stub = sliceable_transceiver_sdm_service_pb2_grpc.ConnectionServiceWithNotifStub(channel)
+        stub = sliceable_transceiver_sdm_service_pb2_grpc.TransceiverServiceStub(channel)
         SetTransceiver(stub, transceiver)
         #listConnection(stub)
-        #getBer(stub)
+        print (getBer(stub) )

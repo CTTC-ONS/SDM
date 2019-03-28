@@ -8,7 +8,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -20,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='sliceable-transceiver-sdm-service.proto',
   package='sliceable_transceiver_sdm_service',
   syntax='proto3',
-  serialized_pb=_b('\n\'sliceable-transceiver-sdm-service.proto\x12!sliceable_transceiver_sdm_service\"\x07\n\x05\x65mpty\"1\n\x0e\x66requency_slot\x12\x0b\n\x03ncf\x18\x01 \x01(\x05\x12\x12\n\nslot_width\x18\x02 \x01(\r\"F\n\x0c\x65qualization\x12\x16\n\x0e\x65qualizationid\x18\x01 \x01(\t\x12\x0c\n\x04mimo\x18\x02 \x01(\x08\x12\x10\n\x08num_taps\x18\x03 \x01(\r\"\xf8\x01\n\x0eoptical_signal\x12\x18\n\x10opticalchannelid\x18\x01 \x01(\t\x12G\n\rconstellation\x18\x02 \x01(\x0e\x32\x30.sliceable_transceiver_sdm_service.Constellation\x12\x11\n\tbandwidth\x18\x03 \x01(\x04\x12\x33\n\x03\x66\x65\x63\x18\x04 \x01(\x0e\x32&.sliceable_transceiver_sdm_service.Fec\x1a\x0e\n\x0c\x65qualization\x1a+\n\x07monitor\x12\x0c\n\x04osnr\x18\x02 \x01(\x01\x1a\x12\n\x03\x62\x65r\x12\x0b\n\x03\x62\x65r\x18\x01 \x01(\x01\"]\n\x0foptical_channel\x12\x18\n\x10opticalchannelid\x18\x01 \x01(\t\x12\x0e\n\x06\x63oreid\x18\x02 \x01(\t\x12\x0e\n\x06modeid\x18\x03 \x01(\t\x1a\x10\n\x0e\x66requency_slot\"\xb0\x01\n\x05slice\x12\x0f\n\x07sliceid\x18\x01 \x01(\t\x12K\n\x0foptical_channel\x18\x02 \x03(\x0b\x32\x32.sliceable_transceiver_sdm_service.optical_channel\x12I\n\x0eoptical_signal\x18\x03 \x03(\x0b\x32\x31.sliceable_transceiver_sdm_service.optical_signal\"\x1a\n\x07sliceid\x12\x0f\n\x07sliceid\x18\x01 \x01(\t\"]\n\x0btransceiver\x12\x15\n\rtransceiverid\x18\x01 \x01(\t\x12\x37\n\x05slice\x18\x02 \x03(\x0b\x32(.sliceable_transceiver_sdm_service.slice*9\n\rConstellation\x12\t\n\x05qam64\x10\x00\x12\t\n\x05qam16\x10\x01\x12\x08\n\x04qam4\x10\x02\x12\x08\n\x04qpsk\x10\x03*\x1b\n\x03\x46\x65\x63\x12\t\n\x05hdfec\x10\x00\x12\t\n\x05sdfec\x10\x01\x32\xfb\x01\n\x12TransceiverService\x12l\n\x0eSetTransceiver\x12..sliceable_transceiver_sdm_service.transceiver\x1a(.sliceable_transceiver_sdm_service.empty\"\x00\x12w\n\x06GetBer\x12*.sliceable_transceiver_sdm_service.sliceid\x1a=.sliceable_transceiver_sdm_service.optical_signal.monitor.ber\"\x00\x30\x01\x62\x06proto3')
+  serialized_options=None,
+  serialized_pb=_b('\n\'sliceable-transceiver-sdm-service.proto\x12!sliceable_transceiver_sdm_service\"\x07\n\x05\x65mpty\"1\n\x0e\x66requency_slot\x12\x0b\n\x03ncf\x18\x01 \x01(\x05\x12\x12\n\nslot_width\x18\x02 \x01(\r\"F\n\x0c\x65qualization\x12\x16\n\x0e\x65qualizationid\x18\x01 \x01(\t\x12\x0c\n\x04mimo\x18\x02 \x01(\x08\x12\x10\n\x08num_taps\x18\x03 \x01(\r\"\x99\x02\n\x0eoptical_signal\x12\x18\n\x10opticalchannelid\x18\x01 \x01(\t\x12G\n\rconstellation\x18\x02 \x01(\x0e\x32\x30.sliceable_transceiver_sdm_service.Constellation\x12\x11\n\tbandwidth\x18\x03 \x01(\x04\x12\x33\n\x03\x66\x65\x63\x18\x04 \x01(\x0e\x32&.sliceable_transceiver_sdm_service.Fec\x1a\x0e\n\x0c\x65qualization\x1aL\n\x07monitor\x12\x33\n\x03\x62\x65r\x18\x01 \x01(\x0b\x32&.sliceable_transceiver_sdm_service.ber\x12\x0c\n\x04osnr\x18\x02 \x01(\x01\"\x12\n\x03\x62\x65r\x12\x0b\n\x03\x62\x65r\x18\x01 \x01(\x01\"]\n\x0foptical_channel\x12\x18\n\x10opticalchannelid\x18\x01 \x01(\t\x12\x0e\n\x06\x63oreid\x18\x02 \x01(\t\x12\x0e\n\x06modeid\x18\x03 \x01(\t\x1a\x10\n\x0e\x66requency_slot\"\xb0\x01\n\x05slice\x12\x0f\n\x07sliceid\x18\x01 \x01(\t\x12K\n\x0foptical_channel\x18\x02 \x03(\x0b\x32\x32.sliceable_transceiver_sdm_service.optical_channel\x12I\n\x0eoptical_signal\x18\x03 \x03(\x0b\x32\x31.sliceable_transceiver_sdm_service.optical_signal\"\x1a\n\x07sliceid\x12\x0f\n\x07sliceid\x18\x01 \x01(\t\"]\n\x0btransceiver\x12\x15\n\rtransceiverid\x18\x01 \x01(\t\x12\x37\n\x05slice\x18\x02 \x03(\x0b\x32(.sliceable_transceiver_sdm_service.slice*9\n\rConstellation\x12\t\n\x05qam64\x10\x00\x12\t\n\x05qam16\x10\x01\x12\x08\n\x04qam4\x10\x02\x12\x08\n\x04qpsk\x10\x03*\x1b\n\x03\x46\x65\x63\x12\t\n\x05hdfec\x10\x00\x12\t\n\x05sdfec\x10\x01\x32\xe4\x01\n\x12TransceiverService\x12l\n\x0eSetTransceiver\x12..sliceable_transceiver_sdm_service.transceiver\x1a(.sliceable_transceiver_sdm_service.empty\"\x00\x12`\n\x06GetBer\x12*.sliceable_transceiver_sdm_service.sliceid\x1a&.sliceable_transceiver_sdm_service.ber\"\x00\x30\x01\x62\x06proto3')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _CONSTELLATION = _descriptor.EnumDescriptor(
   name='Constellation',
@@ -32,25 +31,25 @@ _CONSTELLATION = _descriptor.EnumDescriptor(
   values=[
     _descriptor.EnumValueDescriptor(
       name='qam64', index=0, number=0,
-      options=None,
+      serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='qam16', index=1, number=1,
-      options=None,
+      serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='qam4', index=2, number=2,
-      options=None,
+      serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='qpsk', index=3, number=3,
-      options=None,
+      serialized_options=None,
       type=None),
   ],
   containing_type=None,
-  options=None,
-  serialized_start=858,
-  serialized_end=915,
+  serialized_options=None,
+  serialized_start=911,
+  serialized_end=968,
 )
 _sym_db.RegisterEnumDescriptor(_CONSTELLATION)
 
@@ -63,17 +62,17 @@ _FEC = _descriptor.EnumDescriptor(
   values=[
     _descriptor.EnumValueDescriptor(
       name='hdfec', index=0, number=0,
-      options=None,
+      serialized_options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
       name='sdfec', index=1, number=1,
-      options=None,
+      serialized_options=None,
       type=None),
   ],
   containing_type=None,
-  options=None,
-  serialized_start=917,
-  serialized_end=944,
+  serialized_options=None,
+  serialized_start=970,
+  serialized_end=997,
 )
 _sym_db.RegisterEnumDescriptor(_FEC)
 
@@ -100,7 +99,7 @@ _EMPTY = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -124,21 +123,21 @@ _FREQUENCY_SLOT = _descriptor.Descriptor(
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='slot_width', full_name='sliceable_transceiver_sdm_service.frequency_slot.slot_width', index=1,
       number=2, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -162,28 +161,28 @@ _EQUALIZATION = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='mimo', full_name='sliceable_transceiver_sdm_service.equalization.mimo', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='num_taps', full_name='sliceable_transceiver_sdm_service.equalization.num_taps', index=2,
       number=3, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -207,7 +206,7 @@ _OPTICAL_SIGNAL_EQUALIZATION = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -215,36 +214,6 @@ _OPTICAL_SIGNAL_EQUALIZATION = _descriptor.Descriptor(
   ],
   serialized_start=138,
   serialized_end=152,
-)
-
-_OPTICAL_SIGNAL_MONITOR_BER = _descriptor.Descriptor(
-  name='ber',
-  full_name='sliceable_transceiver_sdm_service.optical_signal.monitor.ber',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ber', full_name='sliceable_transceiver_sdm_service.optical_signal.monitor.ber.ber', index=0,
-      number=1, type=1, cpp_type=5, label=1,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=441,
-  serialized_end=459,
 )
 
 _OPTICAL_SIGNAL_MONITOR = _descriptor.Descriptor(
@@ -255,26 +224,33 @@ _OPTICAL_SIGNAL_MONITOR = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='osnr', full_name='sliceable_transceiver_sdm_service.optical_signal.monitor.osnr', index=0,
+      name='ber', full_name='sliceable_transceiver_sdm_service.optical_signal.monitor.ber', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='osnr', full_name='sliceable_transceiver_sdm_service.optical_signal.monitor.osnr', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_OPTICAL_SIGNAL_MONITOR_BER, ],
+  nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=416,
-  serialized_end=459,
+  serialized_end=492,
 )
 
 _OPTICAL_SIGNAL = _descriptor.Descriptor(
@@ -290,42 +266,73 @@ _OPTICAL_SIGNAL = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='constellation', full_name='sliceable_transceiver_sdm_service.optical_signal.constellation', index=1,
       number=2, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='bandwidth', full_name='sliceable_transceiver_sdm_service.optical_signal.bandwidth', index=2,
       number=3, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='fec', full_name='sliceable_transceiver_sdm_service.optical_signal.fec', index=3,
       number=4, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_OPTICAL_SIGNAL_EQUALIZATION, _OPTICAL_SIGNAL_MONITOR, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=211,
-  serialized_end=459,
+  serialized_end=492,
+)
+
+
+_BER = _descriptor.Descriptor(
+  name='ber',
+  full_name='sliceable_transceiver_sdm_service.ber',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ber', full_name='sliceable_transceiver_sdm_service.ber.ber', index=0,
+      number=1, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=494,
+  serialized_end=512,
 )
 
 
@@ -342,7 +349,7 @@ _OPTICAL_CHANNEL_FREQUENCY_SLOT = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
@@ -365,35 +372,35 @@ _OPTICAL_CHANNEL = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='coreid', full_name='sliceable_transceiver_sdm_service.optical_channel.coreid', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='modeid', full_name='sliceable_transceiver_sdm_service.optical_channel.modeid', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_OPTICAL_CHANNEL_FREQUENCY_SLOT, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=461,
-  serialized_end=554,
+  serialized_start=514,
+  serialized_end=607,
 )
 
 
@@ -410,35 +417,35 @@ _SLICE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='optical_channel', full_name='sliceable_transceiver_sdm_service.slice.optical_channel', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='optical_signal', full_name='sliceable_transceiver_sdm_service.slice.optical_signal', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=557,
-  serialized_end=733,
+  serialized_start=610,
+  serialized_end=786,
 )
 
 
@@ -455,21 +462,21 @@ _SLICEID = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=735,
-  serialized_end=761,
+  serialized_start=788,
+  serialized_end=814,
 )
 
 
@@ -486,32 +493,32 @@ _TRANSCEIVER = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='slice', full_name='sliceable_transceiver_sdm_service.transceiver.slice', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto3',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=763,
-  serialized_end=856,
+  serialized_start=816,
+  serialized_end=909,
 )
 
 _OPTICAL_SIGNAL_EQUALIZATION.containing_type = _OPTICAL_SIGNAL
-_OPTICAL_SIGNAL_MONITOR_BER.containing_type = _OPTICAL_SIGNAL_MONITOR
+_OPTICAL_SIGNAL_MONITOR.fields_by_name['ber'].message_type = _BER
 _OPTICAL_SIGNAL_MONITOR.containing_type = _OPTICAL_SIGNAL
 _OPTICAL_SIGNAL.fields_by_name['constellation'].enum_type = _CONSTELLATION
 _OPTICAL_SIGNAL.fields_by_name['fec'].enum_type = _FEC
@@ -523,12 +530,14 @@ DESCRIPTOR.message_types_by_name['empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['frequency_slot'] = _FREQUENCY_SLOT
 DESCRIPTOR.message_types_by_name['equalization'] = _EQUALIZATION
 DESCRIPTOR.message_types_by_name['optical_signal'] = _OPTICAL_SIGNAL
+DESCRIPTOR.message_types_by_name['ber'] = _BER
 DESCRIPTOR.message_types_by_name['optical_channel'] = _OPTICAL_CHANNEL
 DESCRIPTOR.message_types_by_name['slice'] = _SLICE
 DESCRIPTOR.message_types_by_name['sliceid'] = _SLICEID
 DESCRIPTOR.message_types_by_name['transceiver'] = _TRANSCEIVER
 DESCRIPTOR.enum_types_by_name['Constellation'] = _CONSTELLATION
 DESCRIPTOR.enum_types_by_name['Fec'] = _FEC
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 empty = _reflection.GeneratedProtocolMessageType('empty', (_message.Message,), dict(
   DESCRIPTOR = _EMPTY,
@@ -561,13 +570,6 @@ optical_signal = _reflection.GeneratedProtocolMessageType('optical_signal', (_me
   ,
 
   monitor = _reflection.GeneratedProtocolMessageType('monitor', (_message.Message,), dict(
-
-    ber = _reflection.GeneratedProtocolMessageType('ber', (_message.Message,), dict(
-      DESCRIPTOR = _OPTICAL_SIGNAL_MONITOR_BER,
-      __module__ = 'sliceable_transceiver_sdm_service_pb2'
-      # @@protoc_insertion_point(class_scope:sliceable_transceiver_sdm_service.optical_signal.monitor.ber)
-      ))
-    ,
     DESCRIPTOR = _OPTICAL_SIGNAL_MONITOR,
     __module__ = 'sliceable_transceiver_sdm_service_pb2'
     # @@protoc_insertion_point(class_scope:sliceable_transceiver_sdm_service.optical_signal.monitor)
@@ -580,7 +582,13 @@ optical_signal = _reflection.GeneratedProtocolMessageType('optical_signal', (_me
 _sym_db.RegisterMessage(optical_signal)
 _sym_db.RegisterMessage(optical_signal.equalization)
 _sym_db.RegisterMessage(optical_signal.monitor)
-_sym_db.RegisterMessage(optical_signal.monitor.ber)
+
+ber = _reflection.GeneratedProtocolMessageType('ber', (_message.Message,), dict(
+  DESCRIPTOR = _BER,
+  __module__ = 'sliceable_transceiver_sdm_service_pb2'
+  # @@protoc_insertion_point(class_scope:sliceable_transceiver_sdm_service.ber)
+  ))
+_sym_db.RegisterMessage(ber)
 
 optical_channel = _reflection.GeneratedProtocolMessageType('optical_channel', (_message.Message,), dict(
 
@@ -618,5 +626,38 @@ transceiver = _reflection.GeneratedProtocolMessageType('transceiver', (_message.
   ))
 _sym_db.RegisterMessage(transceiver)
 
+
+
+_TRANSCEIVERSERVICE = _descriptor.ServiceDescriptor(
+  name='TransceiverService',
+  full_name='sliceable_transceiver_sdm_service.TransceiverService',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  serialized_start=1000,
+  serialized_end=1228,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='SetTransceiver',
+    full_name='sliceable_transceiver_sdm_service.TransceiverService.SetTransceiver',
+    index=0,
+    containing_service=None,
+    input_type=_TRANSCEIVER,
+    output_type=_EMPTY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBer',
+    full_name='sliceable_transceiver_sdm_service.TransceiverService.GetBer',
+    index=1,
+    containing_service=None,
+    input_type=_SLICEID,
+    output_type=_BER,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_TRANSCEIVERSERVICE)
+
+DESCRIPTOR.services_by_name['TransceiverService'] = _TRANSCEIVERSERVICE
 
 # @@protoc_insertion_point(module_scope)
