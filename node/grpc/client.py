@@ -55,6 +55,6 @@ if __name__ == '__main__':
     transceiver = createTransceiver(2, 1, 12000000000, 1)
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = sliceable_transceiver_sdm_service_pb2_grpc.TransceiverServiceStub(channel)
-        SetTransceiver(stub, transceiver)
+        #SetTransceiver(stub, transceiver)
         #listConnection(stub)
         print (getBer(stub) )
