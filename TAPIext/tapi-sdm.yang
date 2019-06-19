@@ -10,226 +10,163 @@ module tapi-sdm {
     import tapi-topology {
         prefix tapi-topology;
     }
-    organization "ONF OTCC (Open Transport Configuration & Control) Project";
-    contact "
-        Project Web: <https://wiki.opennetworking.org/display/OTCC/TAPI>
-        Project List: <mailto:transport-api@opennetworking.org>
-        Editor: Karthik Sethuraman
-                <mailto:karthik.sethuraman@necam.com>";
+    import tapi-photonic-media {
+        prefix tapi-photonic-media;
+    }
+    organization "CTTC";
+    contact "";
     description "
-        This module contains TAPI OTSi Model definitions.
-        Source: TapiOtsi.uml
-        Copyright (c) 2018 Open Networking Foundation (ONF). All rights reserved.
-        License: This module is distributed under the Apache License 2.0";
-    revision 2018-03-07 {
-        description "ONF Transport API version 2.0.2
-        This YANG module has been generated from the TAPI UML Model using the IISOMI-Eagle xmi2yang mapping tool.
-        Changes in this revision: <https://github.com/OpenNetworkingFoundation/TAPI/blob/develop/CHANGE_LOG/change-log.2.0.2.md>";
-        reference "ONF-TR-527, ONF-TR-512, ONF-TR-531, RFC 6020, RFC 6087 and ONF TAPI UML model
-                  <https://github.com/OpenNetworkingFoundation/TAPI/tree/v2.0.2/UML>";
+        This module contains TAPI SDM Model definitions.
+        ";
+    revision 2019-06-19 {
+        description "Based on ONF Transport API version 2.1.1.
+                   Changes included in this TAPI release (v2.1.1) are listed in
+                   <https://github.com/OpenNetworkingFoundation/TAPI/blob/develop/CHANGE_LOG/change-log.2.1.1.md>";
+        reference "ONF-TR-527, ONF-TR-512, ONF-TR-531, RFC 7950, RFC 6087 and ONF TAPI UML model
+                  <https://github.com/OpenNetworkingFoundation/TAPI/tree/v2.1.0/UML>";
     }
-    augment "/tapi-common:context/tapi-connectivity:connectivity-service" {
-        uses include-core;
-    }
-    augment "/tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point" {
-        uses sdm-connection-end-point-spec;
-        description "Augments the base LayerProtocol information in ConnectionEndPoint with SDM-specific information";
-    }
-    augment "/tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point" {
-        uses sdm-node-edge-point-spec;
+    augment "/tapi-common:context/tapi-topology:topology-context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point" {
+        container sdm-node-edge-point-spec {
+            uses sdm-node-edge-point-spec;
+            description "Augments the base LayerProtocol information in NodeEdgePoint with SDM-specific information";
+        }
         description "Augments the base LayerProtocol information in NodeEdgePoint with SDM-specific information";
     }
-    /***********************
+    augment "/tapi-common:context/tapi-common:service-interface-point" {
+        container sdm-service-interface-point-spec {
+            uses sdm-service-interface-point-spec;
+            description "none";
+        }
+        description "none";
+    }
+    augment "/tapi-common:context/tapi-connectivity:connectivity-context/tapi-connectivity:connectivity-service/tapi-connectivity:end-point" {
+        container sdm-service-interface-point-spec {
+            uses sdm-service-interface-point-spec;
+            description "none";
+        }
+        description "none";
+    }
+    augment "/tapi-common:context/tapi-topology:topology-context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:cep-list/tapi-connectivity:connection-end-point" {
+        container sdm-connection-end-point-spec {
+            uses sdm-connection-end-point-spec;
+            description "none";
+        }
+        description "none";
+    }
+    augment "/tapi-common:context/tapi-connectivity:connectivity-context/tapi-connectivity:connectivity-service" {
+        uses include-core;
+    }
+
+   /**************************
     * package object-classes
-    **********************/ 
-        grouping otsi-pool-pac {
-            
-            list available-frequency-slot {
-                config false;
-                uses frequency-slot;
-                key "slot-id";
-                description "none";
-            }
-            list occupied-frequency-slot {
-                config false;
-                key "slot-id";
-                uses frequency-slot;
-                description "none";
-            }
+    **************************/
+    grouping include-core {
+        container include-core{
+            uses sdm-properties-pac;
+        }
+    }
+    grouping sdm-pool-capability-pac {
+        list available-core {
+            key 'core-id';
+            config false;
+            uses sdm-core-pac;
             description "none";
         }
-        grouping sdm-pool-pac {
-            list available-core{
-                config false;
-                key "core-id";
-                uses core-slot;
-            }
-            container available-transceiver {
-              uses available-transceiver;
-            }
-        }
-        grouping sdm-termination-pac {
-            leaf core-id {
-                type uint64;
-            }
-            list selected-frequency-slot {
-                config false;
-                key "slot-id";                
-                uses frequency-slot;
-                description "none";
-            }
-            description "none";
-        
-        }
-        grouping sdm-connection-end-point-spec {
-            container sdm-termination {
-                config false;
-                uses sdm-termination-pac;
-                description "none";
-            }
-        }
-        grouping sdm-node-edge-point-spec {
-            container sdm-pool {
-                config false;
-                uses sdm-pool-pac;
-                description "none";
-            }
+    }
+    grouping sdm-core-pac {
+        leaf core-id {
+            type uint64;
             description "none";
         }
-        grouping include-core {
-            container include-core{
-                uses sdm-termination-pac;
+        uses tapi-photonic-media:media-channel-pool-capability-pac;
+        container available-transceiver {
+            uses available-transceiver;
+        }
+    }
+    grouping available-transceiver {
+        leaf transceiver-id {
+            type string;
+        }
+        leaf transceiver-type {
+            type string;
+        }
+        leaf supported-modulation-format {
+            type tapi-photonic-media:modulation-technique;
+        }
+        container supportable-spectrum {
+            uses tapi-photonic-media:spectrum-band;
+        }
+        container supported-bandwidth {
+            container max-bw {
+              uses tapi-common:capacity-value;
+            }
+            container min-bw {
+              uses tapi-common:capacity-value;
             }
         }
+        leaf supported-FEC {
+            type string;
+        }
+        leaf supported-equalization {
+            type string;
+        }
+        leaf supported-monitoring {
+            type string;
+        }
+    }
+    grouping sdm-node-edge-point-spec {
+        container sdm-pool {
+            config false;
+            uses sdm-pool-capability-pac;
+            description "none";
+        }
+        description "none";
+    }
 
-    /***********************
+    grouping sdm-properties-pac {
+        leaf core-id {
+            type uint64;
+        }
+        container occupied-spectrum {
+            uses tapi-photonic-media:spectrum-band;
+            description "none";
+        }
+        description "none";
+    }
+ 
+    grouping sdm-service-interface-point-spec {
+        container sdm-pool {
+            config false;
+            uses sdm-pool-capability-pac;
+            description "none";
+        }
+        description "none";
+    }
+   
+    grouping sdm-connection-end-point-spec {
+        container sdm {
+            config false;
+            uses sdm-properties-pac;
+            description "none";
+        }
+        description "none";
+    }
+
+   
+   /**************************
     * package type-definitions
-    **********************/ 
-        grouping nominal-central-frequency-or-wavelength {
-            leaf grid-type {
-                type grid-type;
-                description "Specifies the frequency grid standard used to determine the nominal central frequency and frequency slot width";
-            }
-            leaf adjustment-granularity {
-                type adjustment-granularity;
-                description "Adjustment granularity in Gigahertz. As per ITU-T G.694.1, it is used to calculate nominal central frequency (in THz)";
-            }
-            leaf channel-number {
-                type uint64;
-                description "As per ITU-T G.694.1, this attribute is denoted as 'n' and is used to calculate the nominal central frequency (in THz) as follows:
-                    193.1 + <channelNumber> × <adjustmentGranularity> where channelNumber is a positive or negative integer including 0 and adjustment_granularity is the nominal central frequency granularity in THz";
-            }
-            description "This data-type holds the information to determine the nominal central frequency of a FIXED grid (DWDM or CWDM) and FLEX grid type systems.
-                As per ITU-T G.694.1, the nominal central frequency (in THz) is calculated as follows:
-                193.1 + <channelNumber> × <adjustmentGranularity> where channelNumber is a positive or negative integer including 0 and <adjustment_granularity> is the nominal central frequency granularity in THz
-                For FIXED grid types, the adjustmentGranularity is one of (0.1/0.05/0.025/0.0125) THz corresponding to channel spacing of one of (100/50/25/12.5) GHz
-                For FLEX grid type, the adjusmentGranularity is 0.00625 THz and the slot width is variable in increments of 12.5 GHz";
-        }
-        typedef grid-type {
-            type enumeration {
-                enum DWDM {
-                    description "Fixed frequency grid in C & L bands as specified in ITU-T G.694.1
-                        ";
-                }
-                enum CWDM {
-                    description "Fixed frequency grid as specified in ITU-T G.694.2";
-                }
-                enum FLEX {
-                    description "Flexible frequency grid as specified in ITU-T G.694.1. In this case,
-                        - the allowed frequency slots have a nominal central frequency (in THz) defined by:
-                        193.1 + n × 0.00625 where n is a positive or negative integer including 0 and 0.00625 is the nominal central frequency granularity in THz
-                        - and a slot width defined by:
-                        12.5 × m where m is a positive integer and 12.5 is the slot width granularity in GHz.
-                        Any combination of frequency slots is allowed as long as no two frequency slots overlap.";
-                }
-                enum UNSPECIFIED {
-                    description "Unspecified/proprietary frequency grid";
-                }
-            }
-            description "The frequency grid standard that specify reference set of frequencies used to denote allowed nominal central frequencies that may be used for defining applications.";
-        }
-        typedef adjustment-granularity {
-            type enumeration {
-                enum G_100GHZ {
-                    description "0.1 THz";
-                }
-                enum G_50GHZ {
-                    description "0.05 THz";
-                }
-                enum G_25GHZ {
-                    description "0.025 THz";
-                }
-                enum G_12_5GHZ {
-                    description "0.0125 THz";
-                }
-                enum G_6_25GHZ {
-                    description "0.00625 THz";
-                }
-            }
-            description "Adjustment granularity in Gigahertz. As per ITU-T G.694.1, it is used to calculate nominal central frequency (in THz)";
-        }
-        grouping frequency-slot {
-            leaf slot-id{
-                type uint64;
-            }
-            container nominal-central-frequency {
-                uses nominal-central-frequency-or-wavelength;
-                description "none";
-            }
-            leaf slot-width-number {
-                type uint64;
-                description "As per ITU-T G.694.1, this attribute is denoted as 'm' and is used to calculate the slot width (in GHz) as follows:
-                    12.5 × m where m is a positive integer and 12.5 is the slot width granularity in GHz.";
-            }
-            description "The frequency range allocated to a slot and unavailable to other slots within a flexible grid. A frequency slot is defined by its nominal central frequency. As per ITU-T G.694.1  the slot width is calculated as follows:
-                12.5 × <slotWidthNumber> where slotWidthNumber is a positive integer and 12.5 is the slot width granularity in GHz";
-        }
-        grouping core-slot {
-            leaf core-id {
-                type uint64;
-            }
-            uses otsi-pool-pac;
-        }
-        grouping available-transceiver {
-          leaf transceiver-id {
-            type string;
-          }
-          leaf transceiver-type {
-            type string;
-          }
-          container supported-modulation-format {
-            leaf modulation-id {
-              type string;
-            }
-            leaf mod-type {
-              type string;
-            }
-          }
-          container supported-center-frequency-range {
-            leaf max-cf {
-              type string;
-            }
-            leaf min-cf {
-              type string;
-            }
-          }
-          container supported-bandwidth {
-            leaf max-bw {
-              type string;
-            }
-            leaf min-bw {
-              type string;
-            }
-          }
-          leaf supported-FEC {
-            type string;
-          }
-          leaf supported-equalization {
-            type string;
-          }
-          leaf supported-monitoring {
-            type string;
-          }
-      }
+    **************************/
+    identity SDM_LAYER_QUALIFIER {
+        base tapi-common:LAYER_PROTOCOL_QUALIFIER;
+        description "none";
+    }
 
+    typedef sdm-layer-qualifier {
+        type identityref {
+            base SDM_LAYER_QUALIFIER;
+        }
+        description "none";
+    }
+
+    
 }
