@@ -4,131 +4,146 @@ module: tapi-sdm
     +--ro sdm-node-edge-point-spec
        +--ro sdm-pool
           +--ro available-core* [core-id]
-             +--ro core-id                  uint64
-             +--ro supportable-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
+          |  +--ro core-id           uint64
+          |  +--ro available-mode* [mode-id]
+          |     +--ro mode-id                 uint64
+          |     +--ro supportable-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro available-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro occupied-spectrum* [upper-frequency lower-frequency]
+          |        +--ro upper-frequency         uint64
+          |        +--ro lower-frequency         uint64
+          |        +--ro frequency-constraint
+          |           +--ro adjustment-granularity?   adjustment-granularity
+          |           +--ro grid-type?                grid-type
+          +--ro available-transceiver
+             +--ro transceiver-id?         string
+             +--ro transceiver-type?       string
+             +--ro core_mode_ref* [core_mode_ref]
+             |  +--ro core_mode_ref    uint64
+             |  +--ro core-id* [core-id]
+             |  |  +--ro core-id    uint64
+             |  +--ro mode-id* [mode-id]
+             |     +--ro mode-id    uint64
+             +--ro supportable-slices?     uint64
+             +--ro supportable-spectrum
+             |  +--ro upper-frequency?        uint64
+             |  +--ro lower-frequency?        uint64
              |  +--ro frequency-constraint
              |     +--ro adjustment-granularity?   adjustment-granularity
              |     +--ro grid-type?                grid-type
-             +--ro available-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro occupied-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro available-transceiver
-                +--ro transceiver-id?                string
-                +--ro transceiver-type?              string
-                +--ro supported-modulation-format?   tapi-photonic-media:modulation-technique
-                +--ro supportable-spectrum
-                |  +--ro upper-frequency?        uint64
-                |  +--ro lower-frequency?        uint64
-                |  +--ro frequency-constraint
-                |     +--ro adjustment-granularity?   adjustment-granularity
-                |     +--ro grid-type?                grid-type
-                +--ro supported-bandwidth
-                |  +--ro max-bw
-                |  |  +--ro value?   uint64
-                |  |  +--ro unit?    capacity-unit
-                |  +--ro min-bw
-                |     +--ro value?   uint64
-                |     +--ro unit?    capacity-unit
-                +--ro supported-FEC?                 string
-                +--ro supported-equalization?        string
-                +--ro supported-monitoring?          string
+             +--ro supported-bandwidth
+                +--ro max-bw
+                |  +--ro value?   uint64
+                |  +--ro unit?    capacity-unit
+                +--ro min-bw
+                   +--ro value?   uint64
+                   +--ro unit?    capacity-unit
   augment /tapi-common:context/tapi-common:service-interface-point:
     +--rw sdm-service-interface-point-spec
        +--ro sdm-pool
           +--ro available-core* [core-id]
-             +--ro core-id                  uint64
-             +--ro supportable-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
+          |  +--ro core-id           uint64
+          |  +--ro available-mode* [mode-id]
+          |     +--ro mode-id                 uint64
+          |     +--ro supportable-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro available-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro occupied-spectrum* [upper-frequency lower-frequency]
+          |        +--ro upper-frequency         uint64
+          |        +--ro lower-frequency         uint64
+          |        +--ro frequency-constraint
+          |           +--ro adjustment-granularity?   adjustment-granularity
+          |           +--ro grid-type?                grid-type
+          +--ro available-transceiver
+             +--ro transceiver-id?         string
+             +--ro transceiver-type?       string
+             +--ro core_mode_ref* [core_mode_ref]
+             |  +--ro core_mode_ref    uint64
+             |  +--ro core-id* [core-id]
+             |  |  +--ro core-id    uint64
+             |  +--ro mode-id* [mode-id]
+             |     +--ro mode-id    uint64
+             +--ro supportable-slices?     uint64
+             +--ro supportable-spectrum
+             |  +--ro upper-frequency?        uint64
+             |  +--ro lower-frequency?        uint64
              |  +--ro frequency-constraint
              |     +--ro adjustment-granularity?   adjustment-granularity
              |     +--ro grid-type?                grid-type
-             +--ro available-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro occupied-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro available-transceiver
-                +--ro transceiver-id?                string
-                +--ro transceiver-type?              string
-                +--ro supported-modulation-format?   tapi-photonic-media:modulation-technique
-                +--ro supportable-spectrum
-                |  +--ro upper-frequency?        uint64
-                |  +--ro lower-frequency?        uint64
-                |  +--ro frequency-constraint
-                |     +--ro adjustment-granularity?   adjustment-granularity
-                |     +--ro grid-type?                grid-type
-                +--ro supported-bandwidth
-                |  +--ro max-bw
-                |  |  +--ro value?   uint64
-                |  |  +--ro unit?    capacity-unit
-                |  +--ro min-bw
-                |     +--ro value?   uint64
-                |     +--ro unit?    capacity-unit
-                +--ro supported-FEC?                 string
-                +--ro supported-equalization?        string
-                +--ro supported-monitoring?          string
+             +--ro supported-bandwidth
+                +--ro max-bw
+                |  +--ro value?   uint64
+                |  +--ro unit?    capacity-unit
+                +--ro min-bw
+                   +--ro value?   uint64
+                   +--ro unit?    capacity-unit
   augment /tapi-common:context/tapi-connectivity:connectivity-context/tapi-connectivity:connectivity-service/tapi-connectivity:end-point:
     +--rw sdm-service-interface-point-spec
        +--ro sdm-pool
           +--ro available-core* [core-id]
-             +--ro core-id                  uint64
-             +--ro supportable-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
+          |  +--ro core-id           uint64
+          |  +--ro available-mode* [mode-id]
+          |     +--ro mode-id                 uint64
+          |     +--ro supportable-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro available-spectrum* [upper-frequency lower-frequency]
+          |     |  +--ro upper-frequency         uint64
+          |     |  +--ro lower-frequency         uint64
+          |     |  +--ro frequency-constraint
+          |     |     +--ro adjustment-granularity?   adjustment-granularity
+          |     |     +--ro grid-type?                grid-type
+          |     +--ro occupied-spectrum* [upper-frequency lower-frequency]
+          |        +--ro upper-frequency         uint64
+          |        +--ro lower-frequency         uint64
+          |        +--ro frequency-constraint
+          |           +--ro adjustment-granularity?   adjustment-granularity
+          |           +--ro grid-type?                grid-type
+          +--ro available-transceiver
+             +--ro transceiver-id?         string
+             +--ro transceiver-type?       string
+             +--ro core_mode_ref* [core_mode_ref]
+             |  +--ro core_mode_ref    uint64
+             |  +--ro core-id* [core-id]
+             |  |  +--ro core-id    uint64
+             |  +--ro mode-id* [mode-id]
+             |     +--ro mode-id    uint64
+             +--ro supportable-slices?     uint64
+             +--ro supportable-spectrum
+             |  +--ro upper-frequency?        uint64
+             |  +--ro lower-frequency?        uint64
              |  +--ro frequency-constraint
              |     +--ro adjustment-granularity?   adjustment-granularity
              |     +--ro grid-type?                grid-type
-             +--ro available-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro occupied-spectrum* [upper-frequency lower-frequency]
-             |  +--ro upper-frequency         uint64
-             |  +--ro lower-frequency         uint64
-             |  +--ro frequency-constraint
-             |     +--ro adjustment-granularity?   adjustment-granularity
-             |     +--ro grid-type?                grid-type
-             +--ro available-transceiver
-                +--ro transceiver-id?                string
-                +--ro transceiver-type?              string
-                +--ro supported-modulation-format?   tapi-photonic-media:modulation-technique
-                +--ro supportable-spectrum
-                |  +--ro upper-frequency?        uint64
-                |  +--ro lower-frequency?        uint64
-                |  +--ro frequency-constraint
-                |     +--ro adjustment-granularity?   adjustment-granularity
-                |     +--ro grid-type?                grid-type
-                +--ro supported-bandwidth
-                |  +--ro max-bw
-                |  |  +--ro value?   uint64
-                |  |  +--ro unit?    capacity-unit
-                |  +--ro min-bw
-                |     +--ro value?   uint64
-                |     +--ro unit?    capacity-unit
-                +--ro supported-FEC?                 string
-                +--ro supported-equalization?        string
-                +--ro supported-monitoring?          string
+             +--ro supported-bandwidth
+                +--ro max-bw
+                |  +--ro value?   uint64
+                |  +--ro unit?    capacity-unit
+                +--ro min-bw
+                   +--ro value?   uint64
+                   +--ro unit?    capacity-unit
   augment /tapi-common:context/tapi-topology:topology-context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:cep-list/tapi-connectivity:connection-end-point:
     +--ro sdm-connection-end-point-spec
        +--ro sdm

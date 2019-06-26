@@ -72,16 +72,27 @@ module tapi-sdm {
             uses sdm-core-pac;
             description "none";
         }
+        container available-transceiver {
+            uses available-transceiver;
+        }
     }
     grouping sdm-core-pac {
         leaf core-id {
             type uint64;
             description "none";
         }
-        uses tapi-photonic-media:media-channel-pool-capability-pac;
-        container available-transceiver {
-            uses available-transceiver;
+        list available-mode {
+            key "mode-id";
+            uses sdm-mode-pac;
+            description "none";
         }
+    }
+    grouping sdm-mode-pac {
+        leaf mode-id {
+            type uint64;
+            description "none";
+        }
+        uses tapi-photonic-media:media-channel-pool-capability-pac;
     }
     grouping available-transceiver {
         leaf transceiver-id {
@@ -90,8 +101,29 @@ module tapi-sdm {
         leaf transceiver-type {
             type string;
         }
-        leaf supported-modulation-format {
+        list core_mode_ref {
+            key "core_mode_ref";
+            leaf core_mode_ref {
+                type uint64;
+            }
+            list core-id {
+                key "core-id";
+                leaf core-id {
+                    type uint64;
+                }
+            }
+            list mode-id {
+                key "mode-id";
+                leaf mode-id {
+                    type uint64;
+                }
+            }
+        }
+        /**leaf supported-modulation-format {
             type tapi-photonic-media:modulation-technique;
+        }*/
+        leaf supportable-slices {
+            type uint64;
         }
         container supportable-spectrum {
             uses tapi-photonic-media:spectrum-band;
@@ -104,7 +136,7 @@ module tapi-sdm {
               uses tapi-common:capacity-value;
             }
         }
-        leaf supported-FEC {
+        /**leaf supported-FEC {
             type string;
         }
         leaf supported-equalization {
@@ -112,7 +144,7 @@ module tapi-sdm {
         }
         leaf supported-monitoring {
             type string;
-        }
+        }*/
     }
     grouping sdm-node-edge-point-spec {
         container sdm-pool {
